@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What is Space and Time Complexity and why does it matter?</title>
+  <style>
+    body { background: #0f0f0f; color: #f1f1f1; font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }
+    a { color: #ff6600; text-decoration: none; }
+    h1 { color: #ff9933; }
+  </style>
+</head>
+<body>
+  <h1>What is Space and Time Complexity and why does it matter?</h1>
+
+  <p>When writing computer programs, it’s important to know how efficient your code is. Two key factors that measure efficiency are <strong>time complexity</strong> and <strong>space complexity</strong>. These concepts help you understand how your code will perform as the amount of data grows.</p>
+
+  <p>Time complexity tells you how the running time of an algorithm increases as the input size increases. For example, if you have a list of n numbers and you want to find the largest number, you might have to look at each number once. This means the time it takes grows in direct proportion to the size of the list. If you double the number of items, it will take about twice as long to finish.</p>
+
+  <p>Some algorithms are faster than others. For example, searching in a sorted list using binary search is much quicker than checking each item one by one. Binary search works by repeatedly dividing the list in half, so the number of steps grows much more slowly as the list gets bigger. On the other hand, some algorithms like bubble sort are much slower because they have to compare every item with every other item, which takes much more time as the list grows.</p>
+
+  <p>Space complexity measures how much extra memory your algorithm needs as the input size grows. If your algorithm only uses a few variables, it uses a constant amount of memory, no matter how big the input is. But if it needs to store another list that is as big as the input, the memory it uses will grow along with the input size.</p>
+
+  <p>Understanding these complexities helps you write code that runs faster and uses less memory, especially for large inputs. In coding interviews and real-world projects, choosing efficient algorithms can make a big difference in performance. For example, a program that works fine with a small amount of data might become very slow or even crash when handling a large dataset if it is not efficient.</p>
+
+  <p>It’s also important to consider the trade-offs between time and space complexity. Sometimes, you can make a program run faster by using more memory, or you can save memory by making the program run a bit slower. The best choice depends on the specific problem you are trying to solve and the resources available on your computer or server.</p>
+
+  <p>In summary, time and space complexity are essential for analyzing and comparing algorithms. They help you predict how your code will scale and ensure your programs run efficiently. By understanding these concepts, you can make better decisions about which algorithms to use and how to optimize your code for both speed and memory usage.</p>
+
+  <a href="index.html">← Back to Blog</a>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course Registration Conflict Resolution System – DBMS Project</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+  </style>
+</head>
+<body>
+  <h1>Course Registration Conflict Resolution System – DBMS Project</h1>
+
+  <p>Managing university course registrations can become very challenging, especially when students face timetable conflicts. To address this, we developed a <strong>Course Registration Conflict Resolution System</strong> — a centralized, database-driven application that helps students register for courses and avoid timing clashes efficiently. This system was designed as a complete Database Management System (DBMS) project using ER modeling, normalization, and SQL scripts.</p>
+
+  <h2>Project Objective</h2>
+  <p>The main goal of this system is to simplify the course registration process for students while allowing advisors and administrators to manage course offerings, class schedules, and room allocations. It focuses on solving the problem of overlapping class times and improving scheduling accuracy.</p>
+
+  <h2>Conceptual Modeling</h2>
+  <p>We chose a centralized approach where all types of users (students, advisors) are integrated into one system. This design ensures consistency, easy maintenance, and avoids data duplication.</p>
+
+  <p>Key design principles include:</p>
+  <ul>
+    <li><strong>Overlapping User Needs:</strong> Students and advisors both need access to course data and timetables.</li>
+    <li><strong>Manageable Complexity:</strong> The system includes important entities like Student, Course, Timetable, but keeps relationships straightforward.</li>
+    <li><strong>Consistency & Integration:</strong> All schedules, room data, and registrations are stored in one unified database.</li>
+    <li><strong>Simplified Maintenance:</strong> Any updates to course timings, sections, or classrooms can be made from a single location.</li>
+  </ul>
+
+  <h2>Entities and Relationships</h2>
+  <p>The system is built on the following main entities:</p>
+  <ul>
+    <li><strong>Advisor:</strong> Stores ID, Name, and Email of academic advisors.</li>
+    <li><strong>Student:</strong> Holds enrollment number, name, and email.</li>
+    <li><strong>Course:</strong> Contains Course ID, Name, Credit Hours, and advisor information.</li>
+    <li><strong>Course Offering:</strong> Semester and Year when a course is offered.</li>
+    <li><strong>Timetable:</strong> Stores class timings, days, sections, and assigned classrooms.</li>
+    <li><strong>Classroom:</strong> Holds room number, building, and seating capacity.</li>
+    <li><strong>Register:</strong> Keeps record of student-course-section registrations.</li>
+  </ul>
+
+  <h2>Normalization Process</h2>
+  <p>To ensure data integrity and eliminate redundancy, we applied all three normal forms:</p>
+
+  <h3>First Normal Form (1NF)</h3>
+  <p>All attributes were made atomic, and repeating groups were removed. Each table had a primary key.</p>
+
+  <h3>Second Normal Form (2NF)</h3>
+  <p>We removed partial dependencies. For example, in the <code>Register</code> table, each non-key column depends on the full composite key.</p>
+
+  <h3>Third Normal Form (3NF)</h3>
+  <p>We eliminated transitive dependencies. For instance, advisor and student personal information was split into separate tables to ensure every non-key attribute depends only on the primary key.</p>
+
+  <h2>Final Table Structure</h2>
+  <p>After normalization, the database schema included the following:</p>
+  <ul>
+    <li><code>Advisor(A_ID, A_Email)</code></li>
+    <li><code>AdvisorInformation(A_Email, A_Name)</code></li>
+    <li><code>Student(S_Enrollment, S_Email)</code></li>
+    <li><code>StudentInformation(S_Email, S_Name)</code></li>
+    <li><code>Course(C_ID, Course_Name, A_ID, Semester, Year)</code></li>
+    <li><code>CourseInformation(Course_Name, Credit_Hour)</code></li>
+    <li><code>TimeTable(Day, Section_Name, Start_Time, End_Time, C_ID, RoomNo)</code></li>
+    <li><code>ClassRoom(RoomNo, Capacity)</code></li>
+    <li><code>BuildingInfo(RoomNo, Building)</code></li>
+    <li><code>Register(S_Enrollment, C_ID, Section_Name)</code></li>
+  </ul>
+
+  <h2>SQL Table Creation (DDL)</h2>
+  <p>We implemented the database using SQL DDL scripts. Here are examples of key table creation statements:</p>
+
+  <pre>
+CREATE TABLE Advisor (
+  A_ID INT PRIMARY KEY,
+  A_Email VARCHAR(30)
+);
+
+CREATE TABLE AdvisorInformation (
+  A_Email VARCHAR(30) PRIMARY KEY,
+  A_Name VARCHAR(30)
+);
+
+CREATE TABLE Student (
+  S_Enrollment INT PRIMARY KEY,
+  S_Email VARCHAR(30)
+);
+
+CREATE TABLE Register (
+  S_Enrollment INT,
+  C_ID VARCHAR(10),
+  Section_Name VARCHAR(5),
+  PRIMARY KEY (S_Enrollment, C_ID, Section_Name),
+  FOREIGN KEY (S_Enrollment) REFERENCES Student(S_Enrollment)
+);
+  </pre>
+
+  <p>These scripts were executed using MySQL Workbench and follow best practices for relational integrity.</p>
+
+  <h2>Conclusion</h2>
+  <p>The Course Registration Conflict Resolution System is a real-world database application that shows how to manage users, schedules, and classroom constraints effectively. This project demonstrates database modeling, normalization, and implementation, and it serves as a strong foundation for future development of complete academic management solutions.</p>
+<h2>Project Repository</h2>
+<p>You can explore the full source code, ERD diagram, and SQL scripts for this project on our GitHub repository:</p>
+<p><a href="https://github.com/AmmarJamil23/Conflict-Resolution-System-DBMS-" target="_blank">🔗 View Project on GitHub</a></p>
+
+</body>
+</html>

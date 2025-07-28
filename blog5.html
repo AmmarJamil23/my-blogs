@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Josephus Problem – DAA Project Visual Simulation</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Josephus Problem – DAA Project Visual Simulation</h1>
+
+  <p>This project is a visual and interactive simulation of the classic algorithmic challenge known as the <strong>Josephus Problem</strong>. It was developed as part of our Design and Analysis of Algorithms coursework using web technologies: HTML, CSS, and JavaScript.</p>
+
+  <h2> Problem Statement</h2>
+  <p>There are n people standing in a circle, numbered from 1 to n. Starting with the first person, every second person is eliminated in clockwise order. This continues until only one person is left. The problem asks: <em>which position should you stand in to be the last person remaining?</em></p>
+
+  <h2> Project Objective</h2>
+  <p>The main goal of this project is to create a fun, interactive way to understand how the Josephus problem works. Instead of solving it just mathematically, we simulate the step-by-step elimination process visually.</p>
+  <p>Users can enter the number of people, and the program will:</p>
+  <ul>
+    <li>Display all people in a circular layout.</li>
+    <li>Eliminate every second person in real time.</li>
+    <li>Log each elimination and show the final survivor.</li>
+  </ul>
+
+  <h2> Code Structure</h2>
+
+  <h3>1. HTML (Structure)</h3>
+  <p>The HTML part creates the layout of the simulation page. It includes:</p>
+  <ul>
+    <li>A heading for the title.</li>
+    <li>An input field to enter the number of people.</li>
+    <li>A “Start” button to begin the simulation.</li>
+    <li>A circular container to visually display people.</li>
+    <li>A log section to show the elimination history and survivor.</li>
+  </ul>
+
+  <h3>2. CSS (Styling)</h3>
+  <p>The CSS styles the simulation to look clean and engaging:</p>
+  <ul>
+    <li>Each person is shown as a numbered box with an emoji.</li>
+    <li>Eliminated people fade away visually and are logged below.</li>
+    <li>The last remaining person is highlighted with a green background and animation.</li>
+  </ul>
+
+  <h3>3. JavaScript (Logic)</h3>
+  <p>The logic of the Josephus elimination is written in JavaScript:</p>
+  <ul>
+    <li>On clicking start, people are arranged in a circle using trigonometric math.</li>
+    <li>A loop runs to eliminate every second person (k = 2).</li>
+    <li>The process stops when only one person is left — the survivor.</li>
+    <li>A “pop” sound is played during each elimination to make the process more interactive.</li>
+  </ul>
+
+  <h2> Code Snippet</h2>
+  <p>Here’s a simplified part of the JavaScript that handles the elimination process:</p>
+
+  <pre><code>
+let index = 0;
+let count = 0;
+
+interval = setInterval(() => {
+  let skipped = 0;
+  while (true) {
+    index = index % n;
+    if (people[index].alive) {
+      skipped++;
+      if (skipped === 2) break;
+    }
+    index++;
+  }
+
+  const target = people[index];
+  target.alive = false;
+  target.element.remove();
+  popSound.play();
+  logElimination(target.index + 1);
+
+  count++;
+  if (count === n - 1) {
+    clearInterval(interval);
+    const survivor = people.find(p => p.alive);
+    highlightSurvivor(survivor);
+  }
+  index++;
+}, 700);
+  </code></pre>
+
+  <h2> Visual Output</h2>
+  <p>The result is a clean, animated visualization where people vanish one by one, and the survivor is centered and marked in green. It also maintains an “Elimination Log” to show exactly who was removed at each step.</p>
+
+  <h2> Features</h2>
+  <ul>
+    <li>Handles up to 50 people in a circle.</li>
+    <li>Dynamically resizes based on input.</li>
+    <li>Survivor is animated and logged clearly.</li>
+    <li>Users can also press <strong>Enter</strong> to start the simulation.</li>
+  </ul>
+
+  <h2> Learning Outcome</h2>
+  <p>This project helped us deeply understand how recursive and elimination-based algorithms work. Instead of only solving Josephus mathematically, building this from scratch made the concept much clearer and practical. We also improved our web development skills in layout design, animation, and real-time user interaction using JavaScript.</p>
+
+  <h2> Source Code</h2>
+  <p>The full project code including HTML, CSS, JavaScript, and sample outputs is available on our GitHub repository:</p>
+  <p><a href="https://github.com/AmmarJamil23/Josephus-Simulation" target="_blank">🔗 View Project on GitHub</a></p>
+
+  <h2> Conclusion</h2>
+  <p>The Josephus Problem Simulation is a perfect blend of algorithm and creativity. It allows users to not just solve, but visualize how one of the most famous problems in computer science unfolds. It’s an ideal beginner-friendly way to learn both algorithm design and front-end development.</p>
+  <a href="index.html">← Back to Blog</a>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight Reservation System – C++ DSA Project</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flight Reservation System – C++ Project Using Data Structures</h1>
+
+  <p>This project is a simple and complete flight reservation system built using C++. It is designed as part of a university Data Structures and Algorithms (DSA) course. The system helps users book, cancel, and manage flight seat reservations. It also saves the data into a file so that bookings are not lost when the program is closed.</p>
+
+  <h2>Introduction</h2>
+  <p>Airlines need proper systems to handle flight seat bookings. This project allows users to perform all basic operations like booking a seat, canceling a seat, checking available seats, and searching for a passenger. The system is menu-driven and runs in the terminal. The code uses important C++ data structures like maps, sets, and binary search trees to manage the data efficiently.</p>
+
+  <h2>Project Objectives</h2>
+  <ul>
+    <li>Allow users to book and cancel flight seats.</li>
+    <li>Make it easy to update or search for passenger information.</li>
+    <li>Display available and booked seats quickly.</li>
+    <li>Store all booking data in a file to keep it safe even after the program is closed.</li>
+    <li>Use C++ data structures to make the system fast and organized.</li>
+  </ul>
+
+  <h2>System Design</h2>
+  <h3>1. Modules</h3>
+  <p>The system is divided into different parts (called modules):</p>
+  <ul>
+    <li><strong>User Interface:</strong> Shows the menu and asks the user what they want to do.</li>
+    <li><strong>Booking Module:</strong> Manages seat bookings and cancellations.</li>
+    <li><strong>Passenger Data:</strong> Stores and sorts passengers using a binary search tree.</li>
+    <li><strong>File Storage:</strong> Saves and loads booking data from a text file.</li>
+  </ul>
+
+  <h3>2. Main Features</h3>
+  <ul>
+    <li>Book a seat for a passenger.</li>
+    <li>Cancel a seat by seat number or passenger name.</li>
+    <li>Search for a passenger by name.</li>
+    <li>Update passenger name for any seat.</li>
+    <li>Display total booked seats.</li>
+    <li>Sort passengers alphabetically by name.</li>
+    <li>List all available or booked seats.</li>
+    <li>Show the seat with highest or lowest number booked.</li>
+    <li>Save and load all data from a file called <code>flight_data.txt</code>.</li>
+  </ul>
+
+  <h2>How the Code Works</h2>
+
+  <h3>Passenger Class</h3>
+  <p>This class stores the name and seat number of each passenger.</p>
+  <pre><code>
+class Passenger {
+public:
+  string name;
+  int seatNumber;
+  Passenger() : name(""), seatNumber(-1) {}
+  Passenger(string name, int seatNumber) : name(name), seatNumber(seatNumber) {}
+};
+  </code></pre>
+
+  <h3>Binary Search Tree (BST)</h3>
+  <p>Passengers are added to a binary search tree based on their seat numbers. This helps when we want to display booked seats in order.</p>
+
+  <h3>Main System Class</h3>
+  <p>The <code>FlightReservationSystem</code> class contains all the functions. It uses:</p>
+  <ul>
+    <li><code>set</code> to store available seat numbers.</li>
+    <li><code>unordered_map</code> to map seat numbers to passenger details.</li>
+    <li>BST to store passengers in a sorted way by seat number.</li>
+  </ul>
+
+  <h3>Example: Booking a Seat</h3>
+  <p>When the user books a seat, the system picks the lowest available seat number, assigns it to the passenger, and adds it to the BST and the map.</p>
+  <pre><code>
+void bookSeat(string name) {
+  if (availableSeats.empty()) {
+    cout << "No seats available." << endl;
+    return;
+  }
+  int seatNumber = *availableSeats.begin();
+  availableSeats.erase(seatNumber);
+  Passenger p(name, seatNumber);
+  seatMap[seatNumber] = p;
+  root = insertNode(root, p);
+  cout << "Seat booked: " << seatNumber << endl;
+}
+  </code></pre>
+
+  <h2>Data Storage</h2>
+  <p>All passenger data is saved to a file named <code>flight_data.txt</code>. When the program starts, it reads this file and loads all bookings. When the program exits, it saves all current bookings to the file. This makes sure that bookings are not lost even if the program is closed.</p>
+
+  <h2>Testing</h2>
+  <p>The system was tested by booking, canceling, updating, and searching passengers. Edge cases like canceling an unbooked seat or entering wrong input were also tested. The program handled these situations without crashing.</p>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>The system is designed for single-user use. It does not support multiple users at the same time.</li>
+    <li>There is no graphical interface. It runs in the command-line only.</li>
+    <li>There is no support for managing multiple flights, only one flight with fixed seats.</li>
+  </ul>
+
+  <h2>Learning Outcome</h2>
+  <p>This project helped us learn how to use different data structures in real-world problems. We used sets to manage available seats, maps for quick lookups, and binary search trees for sorted data. We also practiced file handling to save and load data. The project improved our understanding of C++, classes, and logic building.</p>
+
+  <h2>GitHub Repository</h2>
+  <p>The full code of the projectin pdf format is available on GitHub:</p>
+  <p><a href="https://github.com/AmmarJamil23/DSA-Flight-Reservation-System" target="_blank">View Project on GitHub</a></p>
+
+  <h2>Conclusion</h2>
+  <p>This flight reservation system is a good example of how data structures and algorithms can be used to solve real-life problems. The system is small but complete. It allows users to do all important booking operations. The code is organized, easy to understand, and can be extended in the future. This project is useful for learning, practice, and improving problem-solving skills in C++.</p>
+    <a href="index.html">← Back to Blog</a>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Understanding self in Python – Object-Oriented Programming Concept</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Understanding <code>self</code> in Python – Object-Oriented Programming Concept</h1>
+
+  <p>This article explains the meaning and usage of the keyword <code>self</code> in Python classes. If you are learning object-oriented programming in Python, you will often see <code>self</code> used in class methods. Many beginners find it confusing, but this guide will explain it step by step in very simple language.</p>
+
+  <h2>Introduction</h2>
+  <p>In Python, everything is an object. When we create a class, we use it to build objects that can store data and perform actions. The keyword <code>self</code> is used inside class methods to refer to the object itself. It is not a special keyword in Python, just a name used by convention.</p>
+
+  <h2>Why is <code>self</code> Needed?</h2>
+  <ul>
+    <li><code>self</code> helps us refer to the object that is calling the method.</li>
+    <li>It allows us to store and access data that belongs to a specific object.</li>
+    <li>Each object has its own copy of variables, and <code>self</code> is how we work with them.</li>
+  </ul>
+
+  <h2>How to Use <code>self</code></h2>
+  <p>Let’s understand with a simple class:</p>
+
+  <pre><code>
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def show_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+s1 = Student("Ali", 20)
+s1.show_info()
+  </code></pre>
+
+  <p>Here is what happens:</p>
+  <ul>
+    <li>The <code>__init__</code> method is like a constructor. It runs when the object is created.</li>
+    <li><code>self.name</code> means “this object's name”. It stores the value passed to <code>name</code>.</li>
+    <li><code>self.age</code> stores the age for that specific object.</li>
+    <li>When <code>s1.show_info()</code> is called, <code>self</code> refers to <code>s1</code>.</li>
+  </ul>
+
+  <h2>Is <code>self</code> a Keyword?</h2>
+  <p>No, <code>self</code> is not a keyword in Python. It is just a common name. You can technically use any name instead of <code>self</code>, but it is strongly recommended to use <code>self</code> because it makes your code more readable and standard.</p>
+
+  <h2>What Happens If You Don’t Use <code>self</code>?</h2>
+  <p>If you don’t use <code>self</code>, Python will not know where to store or access instance variables. Your program will show an error like “name is not defined” or “missing 1 required positional argument”.</p>
+
+  <pre><code>
+class Student:
+    def __init__(name, age):
+        name = name
+        age = age
+
+s1 = Student("Ali", 20)
+# This will not work properly, because self is missing.
+  </code></pre>
+
+  <h2>Using <code>self</code> in Multiple Objects</h2>
+  <p>Each object has its own values. Let’s see what happens when we create two students:</p>
+
+  <pre><code>
+s1 = Student("Ali", 20)
+s2 = Student("Sara", 21)
+
+s1.show_info()
+s2.show_info()
+  </code></pre>
+
+  <p>The output will be:</p>
+  <pre><code>
+Name: Ali
+Age: 20
+Name: Sara
+Age: 21
+  </code></pre>
+
+  <p>This is because <code>self</code> refers to <code>s1</code> in the first call, and to <code>s2</code> in the second call. So, each object works with its own data.</p>
+
+  <h2>Learning Outcome</h2>
+  <p>By understanding <code>self</code> in Python, we can write clean and reusable object-oriented code. We now know:</p>
+  <ul>
+    <li><code>self</code> refers to the current object.</li>
+    <li>It helps store and access data for that object.</li>
+    <li>It must be the first parameter in all instance methods.</li>
+    <li>Using <code>self</code> is a good coding practice in Python classes.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p><code>self</code> is a simple but very important concept in Python. It is used in almost every class we write. Once you understand that <code>self</code> is just a reference to the object calling the method, it becomes much easier to write class-based code. Practice using <code>self</code> in your own classes to get more comfortable with object-oriented programming in Python.</p>
+
+  <a href="index.html">← Back to Blog</a>
+</body>
+</html>

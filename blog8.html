@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Understanding Inheritance in Python – Object-Oriented Concept</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Understanding Inheritance in Python – Object-Oriented Concept</h1>
+
+  <p>This blog explains the concept of inheritance in Python using simple examples. Inheritance allows us to create a new class from an existing class. The new class can reuse the methods and properties of the old class. This helps reduce code repetition and keeps our program clean and organized.</p>
+
+  <h2>Introduction</h2>
+  <p>In object-oriented programming, inheritance means one class (called child class) gets the properties and methods of another class (called parent class). For example, a <code>Student</code> and an <code>Instructor</code> are both types of <code>Person</code>, so we can write common code in the <code>Person</code> class and let the other classes inherit from it.</p>
+
+  <h2>Why Use Inheritance?</h2>
+  <ul>
+    <li>To avoid writing the same code again and again.</li>
+    <li>To organize the code better using base (parent) and derived (child) classes.</li>
+    <li>To make programs easier to maintain and update.</li>
+  </ul>
+
+  <h2>Basic Syntax of Inheritance</h2>
+  <pre><code>
+class Parent:
+    # parent class code
+
+class Child(Parent):
+    # child class code
+  </code></pre>
+
+  <h2>Example: Person, Student, Instructor</h2>
+  <p>Let’s create a <code>Person</code> class with common properties. Then we will create two more classes: <code>Student</code> and <code>Instructor</code> that inherit from <code>Person</code>.</p>
+
+  <h3>Person Class</h3>
+  <pre><code>
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+  </code></pre>
+
+  <h3>Student Class (inherits from Person)</h3>
+  <pre><code>
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)  # call the parent constructor
+        self.student_id = student_id
+
+    def display_student(self):
+        self.display_info()
+        print("Student ID:", self.student_id)
+  </code></pre>
+
+  <h3>Instructor Class (inherits from Person)</h3>
+  <pre><code>
+class Instructor(Person):
+    def __init__(self, name, age, subject):
+        super().__init__(name, age)
+        self.subject = subject
+
+    def display_instructor(self):
+        self.display_info()
+        print("Subject:", self.subject)
+  </code></pre>
+
+  <h2>Using the Classes</h2>
+  <pre><code>
+# Creating a student object
+s1 = Student("Ali", 20, "ST123")
+s1.display_student()
+
+# Creating an instructor object
+i1 = Instructor("Dr. Ahmad", 45, "Mathematics")
+i1.display_instructor()
+  </code></pre>
+
+  <p><strong>Output:</strong></p>
+  <pre><code>
+Name: Ali
+Age: 20
+Student ID: ST123
+
+Name: Dr. Ahmad
+Age: 30
+Subject: Mathematics
+  </code></pre>
+
+  <h2>Learning Outcome</h2>
+  <p>In this example, we learned how to use inheritance in Python. The <code>Person</code> class stores common information. The <code>Student</code> and <code>Instructor</code> classes reuse this information and add their own extra data. This makes the code clean, simple, and easy to reuse. We also learned about the <code>super()</code> function which is used to call the parent class constructor.</p>
+
+  <h2>Conclusion</h2>
+  <p>Inheritance is a powerful feature in Python. It allows us to build complex systems by reusing code. Once you understand how parent and child classes work, you can build large applications with better structure. Practice this by creating more classes like <code>Employee</code>, <code>Manager</code>, <code>Vehicle</code>, etc., and applying inheritance to them.</p>
+
+  <a href="index.html">← Back to Blog</a>
+</body>
+</html>

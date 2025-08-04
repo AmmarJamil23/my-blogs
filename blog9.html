@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Polymorphism in Python – Real World Notification System</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Polymorphism in Python – Real World Notification System</h1>
+
+  <p>This blog explains polymorphism in Python using a real-world example: sending notifications. In a modern application, we might want to send messages to users using email, SMS, or push notifications. Although the goal is the same (notify the user), each method works differently. We can use polymorphism to manage this cleanly and efficiently.</p>
+
+  <h2>What is Polymorphism?</h2>
+  <p>Polymorphism means "many forms". In Python, it allows us to use the same method name in different classes, and each class can have its own way of doing the task. This makes our code flexible and easier to extend or update.</p>
+
+  <h2>Use Case: Notification System</h2>
+  <p>Imagine you're building an app like a task manager or an e-commerce platform. When an important event happens, the user can be notified in multiple ways — email, SMS, or a mobile push message.</p>
+
+  <h2>Step 1: Create a Base Class</h2>
+  <p>We define a common method <code>send()</code> in the base class. Each type of notification will implement this differently.</p>
+
+  <pre><code>
+class Notification:
+    def send(self, message, user):
+        raise NotImplementedError("Subclasses must implement send()")
+  </code></pre>
+
+  <h2>Step 2: Create Subclasses</h2>
+  <p>Each subclass represents a type of notification and overrides the <code>send()</code> method.</p>
+
+  <pre><code>
+class EmailNotification(Notification):
+    def send(self, message, user):
+        print(f"Sending EMAIL to {user['email']}: {message}")
+
+class SMSNotification(Notification):
+    def send(self, message, user):
+        print(f"Sending SMS to {user['phone']}: {message}")
+
+class PushNotification(Notification):
+    def send(self, message, user):
+        print(f"Sending PUSH notification to {user['username']}: {message}")
+  </code></pre>
+
+  <h2>Step 3: Using Polymorphism</h2>
+  <p>Now we can create a list of different notification types and treat them all the same way using a common interface.</p>
+
+  <pre><code>
+user_info = {
+    "username": "ammar123",
+    "email": "ammar@example.com",
+    "phone": "+923001234567"
+}
+
+message = "Your order has been shipped!"
+
+notifications = [
+    EmailNotification(),
+    SMSNotification(),
+    PushNotification()
+]
+
+for notifier in notifications:
+    notifier.send(message, user_info)
+  </code></pre>
+
+  <h2>Output:</h2>
+  <pre><code>
+Sending EMAIL to ammar@example.com: Your order has been shipped!
+Sending SMS to +923001234567: Your order has been shipped!
+Sending PUSH notification to ammar123: Your order has been shipped!
+  </code></pre>
+
+  <h2>Why This Is Polymorphism</h2>
+  <ul>
+    <li>The method name <code>send()</code> is the same in all classes.</li>
+    <li>Each class defines its own version of <code>send()</code> based on the notification type.</li>
+    <li>We don’t have to write separate logic for each type — we just call <code>send()</code>.</li>
+  </ul>
+
+  <h2>Learning Outcome</h2>
+  <p>This example shows how polymorphism helps us write cleaner and more organized code. If we want to add a new type of notification later, like WhatsApp or Slack, we only need to create a new class and implement the <code>send()</code> method. The rest of the code will work without changes.</p>
+
+  <h2>Conclusion</h2>
+  <p>Polymorphism is a powerful concept in Python. It lets us build real-world systems where different objects can perform the same action in their own way. By using the same interface and method name across different classes, we keep our code simple, flexible, and easy to extend.</p>
+
+  <a href="index.html">← Back to Blog</a>
+</body>
+</html>

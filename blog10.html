@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bank Management System – C++ Project</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bank Management System – C++ Project (Terminal Based)</h1>
+
+  <p>This project was created as part of our first semester computer programming subject. It is a terminal-based Bank Management System written in C++. The aim of the project was to simulate basic banking operations like creating accounts, depositing money, withdrawing money, and calculating zakat.</p>
+
+  <h2>Introduction</h2>
+  <p>Managing customer accounts and transactions manually becomes difficult as the number of customers increases. To solve this issue, we developed a simple and user-friendly Bank Management System using C++. It can perform basic banking tasks through a text-based menu system.</p>
+
+  <h2>Objectives</h2>
+  <ul>
+    <li>Allow customers to register and create new bank accounts.</li>
+    <li>Enable secure deposits and withdrawals from accounts.</li>
+    <li>Support for different account types like savings and checking.</li>
+    <li>Calculate zakat automatically on applicable accounts.</li>
+    <li>Store and display account summaries and reports.</li>
+  </ul>
+
+  <h2>System Features</h2>
+  <h3>1. Account Creation</h3>
+  <p>Users can create new bank accounts by providing required information like name and initial deposit.</p>
+
+  <h3>2. Deposit and Withdrawal</h3>
+  <p>The system allows users to deposit or withdraw money by entering the account number and the amount.</p>
+
+  <h3>3. Zakat Calculation</h3>
+  <p>For savings accounts with a balance above a certain limit, zakat is calculated and displayed.</p>
+
+  <h3>4. Reports</h3>
+  <p>The system shows detailed account information like account number, holder name, and balance.</p>
+
+  <h2>Functional Requirements</h2>
+  <h3>Customer Management</h3>
+  <ul>
+    <li>Create and store customer details securely.</li>
+    <li>View and update customer information easily.</li>
+  </ul>
+
+  <h3>Account Management</h3>
+  <ul>
+    <li>Open and close accounts.</li>
+    <li>Support multiple types of accounts.</li>
+    <li>Perform deposits, withdrawals, and calculate zakat.</li>
+  </ul>
+
+  <h3>Transaction Handling</h3>
+  <ul>
+    <li>Update balances in real-time after every transaction.</li>
+    <li>Display history of transactions if required.</li>
+  </ul>
+
+  <h2>Technologies Used</h2>
+  <ul>
+    <li><strong>Language:</strong> C++</li>
+    <li><strong>Platform:</strong> Windows Terminal (Command Line)</li>
+    <li><strong>IDE:</strong> Visual Studio / Code::Blocks</li>
+  </ul>
+
+  <h2>System Design Overview</h2>
+  <p>The project has different modules:</p>
+  <ul>
+    <li><strong>Create Account:</strong> Accepts user data and creates a new account.</li>
+    <li><strong>Deposit:</strong> Adds money to the selected account.</li>
+    <li><strong>Withdraw:</strong> Subtracts money from the selected account.</li>
+    <li><strong>Report:</strong> Displays account information and balance.</li>
+    <li><strong>Zakat:</strong> Calculates zakat based on account type and balance.</li>
+  </ul>
+
+  <h2>Team Members</h2>
+  <ul>
+    <li>Muhammad Hammad</li>
+    <li>Ammar Jamil</li>
+    <li>Syed Muhammad Rafay Ali</li>
+  </ul>
+
+  <h2>Sample Code Snippet</h2>
+  <pre><code>
+class BankAccount {
+  string name;
+  int accountNumber;
+  double balance;
+
+public:
+  void createAccount() {
+    cout << "Enter Name: ";
+    cin >> name;
+    cout << "Enter Account Number: ";
+    cin >> accountNumber;
+    cout << "Enter Initial Deposit: ";
+    cin >> balance;
+  }
+
+  void deposit(double amount) {
+    balance += amount;
+  }
+
+  void withdraw(double amount) {
+    if (amount <= balance) balance -= amount;
+    else cout << "Insufficient balance!";
+  }
+
+  void display() {
+    cout << "Account Number: " << accountNumber << endl;
+    cout << "Name: " << name << endl;
+    cout << "Balance: " << balance << endl;
+  }
+};
+  </code></pre>
+
+  <h2>Testing and Output</h2>
+  <p>The program was tested for creating accounts, performing deposits and withdrawals, and checking reports. All features worked correctly and were displayed properly in the terminal.</p>
+
+  <h2>Conclusion</h2>
+  <p>This project gave us hands-on experience with C++ programming, especially with object-oriented concepts like classes, functions, and file handling. It also taught us how to structure a terminal-based application and test it for different edge cases.</p>
+
+  <h2>GitHub Repository</h2>
+  <p>You can view or download the project in PDF format from this repository:</p>
+  <p><a href="https://github.com/AmmarJamil23/BankManagementSystem_CP" target="_blank">View Project on GitHub</a></p>
+
+  <a href="page2.html">← Back to Blog</a>
+</body>
+</html>

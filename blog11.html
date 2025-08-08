@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How to Install Node.js and npm (Latest Version) on Ubuntu</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    a { color: #ff6600; text-decoration: none; }
+    h1, h2, h3 { color: #ff9933; }
+    code { color: #99ccff; }
+    pre {
+      background: #1a1a1a;
+      padding: 1em;
+      overflow-x: auto;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>How to Install Node.js and npm (Latest Version) on Ubuntu</h1>
+
+  <p>If you are a web developer or computer science student learning React, Express.js, or building modern web apps, you need to install Node.js and npm.</p>
+
+  <p>In this blog, I will show you the **recommended method** using a Node Version Manager (n), and also a backup method using NodeSource. I’ll also explain how users in **Pakistan** can improve their download speed using a local mirror.</p>
+
+  <h2>Method 1: Install Node.js using Node Version Manager (<code>n</code>) – Recommended</h2>
+
+  <p>This is the best way to install and manage different versions of Node.js. You can switch between Node versions easily using this method.</p>
+
+  <h3>Step 1: Install Prerequisites</h3>
+  <pre><code>sudo apt update
+sudo apt install curl build-essential -y</code></pre>
+
+  <h3>Step 2: Install Node.js and npm via n</h3>
+  <p>First install <code>n</code> globally:</p>
+  <pre><code>sudo npm install -g n</code></pre>
+
+  <p>Then install the latest stable version of Node.js:</p>
+  <pre><code>sudo n stable</code></pre>
+
+  <p>You can also install the latest LTS (long-term support) version:</p>
+  <pre><code>sudo n lts</code></pre>
+
+  <h3>Step 3: Verify Installation</h3>
+  <pre><code>node -v
+npm -v</code></pre>
+
+  <h3>Step 4: Use Different Node Versions (Optional)</h3>
+  <p>If you want to switch between versions:</p>
+  <pre><code>sudo n 18.19.0   # install and use specific version</code></pre>
+
+  <h2> Note for Pakistani Users</h2>
+  <p>If you are from Pakistan, sometimes the download from the main Node.js server is slow. You can switch to the **Pakistani UET mirror** to speed up installation.</p>
+
+  <p>To do this, instead of downloading directly from <code>deb.nodesource.com</code>, use:</p>
+  <pre><code>curl -fsSL https://mirror.pknode.uet.edu.pk/setup_20.x | sudo -E bash -</code></pre>
+
+  <p>This server is hosted locally in Pakistan and usually gives better speed and less chance of timeout during setup.</p>
+
+  <h2>Method 2: Install Node.js from NodeSource (Alternate Method)</h2>
+  <p>If you do not want to use the version manager, you can install Node.js directly from NodeSource:</p>
+
+  <pre><code>curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs</code></pre>
+
+  <h2>Which Method Should You Use?</h2>
+  <ul>
+    <li><strong>Use Method 1 (n)</strong> if you want to switch between versions and need flexibility.</li>
+    <li><strong>Use Method 2</strong> if you just want one version quickly without setup tools.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>Node.js and npm are essential tools for modern web development. Whether you are working with React, Next.js, Vue, or server-side projects like Express — Node.js helps you build, test, and deploy your applications.</p>
+
+  <p>If you're in Pakistan and downloads are slow, remember to use a mirror server to save time and avoid frustration.</p>
+
+  <p>You are now ready to start your Node.js development journey on Ubuntu!</p>
+
+  <a href="page2.html">← Back to Blog</a>
+</body>
+</html>
+
